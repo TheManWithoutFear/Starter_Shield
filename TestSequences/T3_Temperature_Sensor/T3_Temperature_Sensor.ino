@@ -1,8 +1,8 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Lesson 8: Temperature Sensor
+*  Tick Tock Shield Basic Test Sequence 3: Temperature Sensor
 *
 *  This lesson will show you how to use Temperature Sensor
-*  And display the value in 7-SEG display
+*  
 *
 *  Author: dnaumov
 *  2021-06-08
