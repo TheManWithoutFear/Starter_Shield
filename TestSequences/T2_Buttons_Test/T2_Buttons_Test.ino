@@ -4,8 +4,8 @@
 *  This lesson will show you how to use Temperature Sensor
 *  And display the value in 7-SEG display
 *
-*  Author: Loovee
-*  2013-11-25
+*  Author: dnaumov
+*  2021-06-08
 *  
 *  you may use the following functon:
 *  
@@ -19,33 +19,29 @@
 *  disp.pointOff();                                 // clear :
 *********************************************************************************************************/
 
-#include <TTSLed.h>
+#include <TTSButton.h>
 
-TTSLed led1(TTSLED1);                       // instantiate an object of led1
-TTSLed led2(TTSLED2);                       // instantiate an object of led2
-TTSLed led3(TTSLED3);                       // instantiate an object of led3
-TTSLed led4(TTSLED4);                       // instantiate an object of led4
+TTSButtonV2 keyDown(TTSK1,  "DOWN");                   // instantiate an object of button1
+TTSButtonV2 keyUp(TTSK2,    "UP");                     // instantiate an object of button2
+TTSButtonV2 keyMode(TTSK3,  "FUNC");                   // instantiate an object of button3
 
-TTSLed* leds_ptr[4];
-
-int delay_val = 500;
+TTSButtonV2* all_keys[3];
 
 void setup()
 {
-    leds_ptr[0] = &led1;
-    leds_ptr[1] = &led2;
-    leds_ptr[2] = &led3;
-    leds_ptr[3] = &led4;
+    all_keys[0] = &keyDown;
+    all_keys[1] = &keyUp;
+    all_keys[2] = &keyMode;
+    
+    Serial.begin(115200);
+    Serial.println("Test sequence started. Press buttons and observe terminal");
 }
 
 void loop()
 {
-    for(int i = 0; i < 4; i++)
+    for(int i = 0; i < 3; i++)
     {
-      leds_ptr[i]->on();
-      delay(delay_val);
-      leds_ptr[i]->off();
-      delay(delay_val);
+      all_keys[i]->Handler();
     }
 }
 
