@@ -4,8 +4,8 @@
 *  This lesson will show you how to use Temperature Sensor
 *  And display the value in 7-SEG display
 *
-*  Author: dnaumov
-*  2021-06-07
+*  Author: Loovee
+*  2013-11-25
 *  
 *  you may use the following functon:
 *  
@@ -36,24 +36,14 @@ void setup()
     leds_ptr[1] = &led2;
     leds_ptr[2] = &led3;
     leds_ptr[3] = &led4;
-
-    Serial.begin(115200);
-    Serial.println("Test sequence started. Observe standard LEDs blinking.");
 }
 
 void loop()
 {
     for(int i = 0; i < 4; i++)
     {
-      Serial.print("Turning LED №");
-      int n = i + 1;
-      Serial.print(n);
-      Serial.print(" ON.\n");
       leds_ptr[i]->on();
       delay(delay_val);
-      Serial.print("Turning LED №");
-      Serial.print(n);
-      Serial.print(" OFF.\n");
       leds_ptr[i]->off();
       delay(delay_val);
     }
