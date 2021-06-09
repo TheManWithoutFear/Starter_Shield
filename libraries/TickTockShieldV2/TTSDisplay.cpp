@@ -267,10 +267,14 @@ void TTSDisplay::pointOn()
 {
     _PointFlag = 1;
     
-    for(int i=0; i<4; i++)
-    {
-        display(i, dtaDisplay[i]);
-    }
+    //FOR OLD DISPLAY:
+    // for(int i=0; i<4; i++)
+    // {
+    //     display(i, dtaDisplay[i]);
+    // }
+
+    //FOR NEW DISPLAY
+    display(2, dtaDisplay[2]);
 }
 
 /*********************************************************************************************************
@@ -283,10 +287,14 @@ void TTSDisplay::pointOff()
 {
     _PointFlag = 0;
     
-    for(int i=0; i<4; i++)
-    {
-        display(i, dtaDisplay[i]);
-    }
+    //FOR OLD DISPLAY:
+    // for(int i=0; i<4; i++)
+    // {
+    //     display(i, dtaDisplay[i]);
+    // }
+
+    //FOR NEW DISPLAY
+    display(2, dtaDisplay[2]);
 }
 
 /*********************************************************************************************************
