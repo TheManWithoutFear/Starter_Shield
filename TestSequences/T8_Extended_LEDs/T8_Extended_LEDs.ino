@@ -33,7 +33,7 @@ void loop()
     for(int i = 0; i < 16; i++){
       uint16_t mask = 1 << i;
       PCF1.setValue(mask);
-      delay(70);
+      delay(1000);
     }
 
 
