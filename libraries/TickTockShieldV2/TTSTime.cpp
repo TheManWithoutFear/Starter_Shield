@@ -71,6 +71,7 @@ void TTSTime::setTime(uchar hour, uchar min, uchar sec)
     if(min > 59 || min < 0)return;
     if(sec > 59 || min < 0)return;
     
+    Wire.begin();
     Wire.beginTransmission(I2CADDR);
     Wire.write((uchar)0x00);
     Wire.write(decToBcd(sec));                              // 0 to bit 7 starts the clock
@@ -81,7 +82,7 @@ void TTSTime::setTime(uchar hour, uchar min, uchar sec)
     Wire.write(decToBcd(DAY));
     Wire.write(decToBcd(MONTH));
     Wire.write(decToBcd(YEAR));
-    Wire.endTransmission();
+    Wire.endTransmission(true);
 }
 
 /*********************************************************************************************************
@@ -92,6 +93,7 @@ void TTSTime::setTime(uchar hour, uchar min, uchar sec)
 *********************************************************************************************************/
 void TTSTime::getTime(uchar *hour, uchar *min, uchar *sec)
 {
+    Wire.begin();
     Wire.beginTransmission(I2CADDR);
     Wire.write((uchar)0x00);
     Wire.endTransmission();
@@ -106,6 +108,7 @@ void TTSTime::getTime(uchar *hour, uchar *min, uchar *sec)
     tmp   = bcdToDec(Wire.read());
     tmp   = bcdToDec(Wire.read());
     tmp   = bcdToDec(Wire.read());
+    Wire.endTransmission(true);
 }
 
 /*********************************************************************************************************
