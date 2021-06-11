@@ -72,6 +72,64 @@ public:
     
 };
 
+<<<<<<< HEAD
+=======
+class TTSButtonV2{
+protected:
+    String personal_name = "";
+    TTSButton* pin_handler;
+
+    int buttonState;             // the current reading from the input pin
+    int lastButtonState;       // the previous reading from the input pin
+
+    unsigned long lastDebounceTime;
+    unsigned long debounceDelay;
+public:
+    TTSButtonV2(int pin, String new_name)
+    {
+        pin_handler = new TTSButton(pin);
+
+        personal_name = new_name;
+        lastButtonState = LOW;
+        lastDebounceTime = 0;
+        debounceDelay = 50;
+    }
+    String GetName()
+    {
+        return personal_name;
+    }
+
+    void Handler()
+    {
+        int readedButtonState = pin_handler->get();
+
+        if (readedButtonState != lastButtonState) {
+            lastDebounceTime = millis();
+        }
+
+        if ((millis() - lastDebounceTime) > debounceDelay) {
+            if (readedButtonState != buttonState) {
+            buttonState = readedButtonState;
+
+            // only toggle the LED if the new button state is HIGH
+            if (buttonState == HIGH) {
+                Serial.print("Pressed ");
+                Serial.print(GetName());
+                Serial.print("\n");
+            }else{
+                Serial.print("Released ");
+                Serial.print(GetName());
+                Serial.print("\n");
+            }
+            }
+        }
+
+        // save the reading. Next time through the loop, it'll be the lastButtonState:
+        lastButtonState = readedButtonState;
+    }
+};
+
+>>>>>>> e4cbf78aec5bf7ffa58e5bfae7976912e514fac0
 #endif
 /*********************************************************************************************************
   END FILE

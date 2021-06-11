@@ -5,12 +5,6 @@ Starter Shield is a perfect start for beginners of Arduino world. You can learn 
 Starter Shield contains most common resources for a basic electronic project, like buttons, sensors, buzzer and display. After you're done with the soldering task, it turns out to be a geek style alarm clock which can auto adjust the brightness of display and keep in synch with real world time.
 
 
-[![WiFiBeeV2](http://www.seeedstudio.com/depot/images/product/tickshield.jpg)](http://www.seeedstudio.com/depot/tick-tock-shield-p-1371.html?cPath=84_13)
-
-
-
-
-
 <br>
 ## Usage ##
 
