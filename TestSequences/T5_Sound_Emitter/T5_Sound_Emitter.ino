@@ -7,6 +7,13 @@
 *  2021-06-08
 *  
 *********************************************************************************************************/
+/*********************************************************************************************************
+*  At Doom's Gate (H1M1)
+*  Connect a piezo buzzer or speaker to pin 6 or select a new pin.
+*  More songs available at https://github.com/robsoncouto/arduino-songs
+*                                              Robson Couto, 2019
+*  
+*********************************************************************************************************/
 #define NOTE_B0  31
 #define NOTE_C1  33
 #define NOTE_CS1 35
@@ -269,14 +276,6 @@ void setup() {
 void loop() {
   // no need to repeat the melody.
 }
-
-/*********************************************************************************************************
-*  At Doom's Gate (H1M1)
-*  Connect a piezo buzzer or speaker to pin 11 or select a new pin.
-*  More songs available at https://github.com/robsoncouto/arduino-songs
-*                                              Robson Couto, 2019
-*  
-*********************************************************************************************************/
 
 /*********************************************************************************************************
   END FILE
