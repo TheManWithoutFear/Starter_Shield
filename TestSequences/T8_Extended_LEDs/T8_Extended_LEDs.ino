@@ -1,5 +1,5 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Test Sequence 6: Extended LEDs
+*  Tick Tock Shield Basic Test Sequence 8: Extended LEDs
 *
 *  This lesson will show you how to use I2C driver PCF8574T.
 *  
@@ -8,24 +8,13 @@
 *  
 *********************************************************************************************************/
 #include <TTSExtension.h>
-#include <TTSTime.h>
-#include <Streaming.h>
-#include <Wire.h>
 
 TTSExtension PCF1;
-
-TTSTime time;
-
-int hour;
-int min;
-int sec;
 
 void setup()
 {
     Serial.begin(115200);
-    Wire.begin();
     PCF1.setValue(0);
-    time.setTime(12, 59, 55);
 }
 
 void loop()
@@ -35,10 +24,6 @@ void loop()
       PCF1.setValue(mask);
       delay(1000);
     }
-
-
-  cout << time.getHour() << " : " << time.getMin() << " : " << time.getSec() << endl;
-
 }
 
 
