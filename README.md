@@ -1,10 +1,11 @@
+## Important notice ##
+This project is based on new hardware version designed for practicing in soldering and simple programming. It is not compatible with original TickTock board designed by SeeedStudio. New schematic and PCB files are lolcated here ([New design](https://workspace.circuitmaker.com/Projects/Details/DmytroNaumov/Arduino-Board-Template-Uno-R3-Full-Size-Copy-137 "Revision A0"))
+
+WARNING! PCB design files contain malfunction hidden for purpose. It will be fixed in newer revision. 
+
+DO NOT REPRODUCE PCB WITHOUT CONTACTING AUTHOR!
+
 ## Starter Shield Library ##
-
-This project is based on new hardware version designed for practicing in soldering and simple programming. It is not compatible with original TickTock board designed by SeeedStudio.
-
-New schematic and PCB files are lolcated here ([New design](https://workspace.circuitmaker.com/Projects/Details/DmytroNaumov/Arduino-Board-Template-Uno-R3-Full-Size-Copy-137 "Revision A0"))
-WARNING! PCB design files contain malfunction hidden for purpose. It will be fixed in newer revision. DO NOT REPRODUCE PCB WITHOUT CONTACTING AUTHOR!
-
 Starter Shield is a perfect start for beginners of Arduino world. You can learn and practice basic soldering tricks and programming principles when tinkering with this kit. Electronic could be fun even if you have bare technical knowledge cause we get your back by preparing a detailed soldering guide and a fully supported library of programming examples from easy to difficult. Hope you have fun and gain some knowledge with this kit!
 
 Starter Shield contains most common resources for a basic electronic project, like buttons, sensors, buzzer and display. After you're done with the soldering task, it turns out to be a geek style alarm clock which can auto adjust the brightness of display and keep in synch with real world time.
