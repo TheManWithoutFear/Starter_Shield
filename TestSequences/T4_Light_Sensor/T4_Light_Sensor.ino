@@ -1,8 +1,9 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Test Sequence 4: Light Sensor
+*  Tick Tock Shield Test Sequence 4: Light Sensor
 *
 *  This lesson will show you how to use Light Sensor
 *  
+*
 *  Author: dnaumov
 *  2021-06-08
 *  

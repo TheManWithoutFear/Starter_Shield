@@ -1,5 +1,5 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Test Sequence 6: RTC Test
+*  Tick Tock Shield Test Sequence 6: RTC Test
 *
 *  This lesson will show you how to communicate with DS1307 - real time clock IC.
 *  

@@ -1,5 +1,5 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Test Sequence 5: Sound Emitter
+*  Tick Tock Shield Test Sequence 5: Sound Emitter
 *
 *  This lesson will show you how to use "Buzzer"
 *  

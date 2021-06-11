@@ -1,7 +1,8 @@
 /*********************************************************************************************************
 *  Tick Tock Shield Test Sequence 1: Standard LEDs
 *  
-*  
+*  This lesson will show how to work with standard LEDs soldered directly to 
+*  Arduino pins.
 *
 *  Author: dnaumov
 *  2021-06-07

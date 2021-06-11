@@ -1,5 +1,5 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Test Sequence 8: Extended LEDs
+*  Tick Tock Shield Test Sequence 8: Extended LEDs
 *
 *  This lesson will show you how to use I2C driver PCF8574T.
 *  

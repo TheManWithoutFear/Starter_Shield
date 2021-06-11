@@ -1,5 +1,5 @@
 /*********************************************************************************************************
-*  Tick Tock Shield Basic Test Sequence 6: Display
+*  Tick Tock Shield Test Sequence 6: Display
 *
 *  This lesson will show you how to use Display driver TM1637.
 *  
