@@ -48,6 +48,9 @@ TTSDisplay::TTSDisplay()
   Datapin = 8;
   pinMode(Clkpin,OUTPUT);
   pinMode(Datapin,OUTPUT);
+
+    init();
+    set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
 }
 void TTSDisplay::init(void)
 {
