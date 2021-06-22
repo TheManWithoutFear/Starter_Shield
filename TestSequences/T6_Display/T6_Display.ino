@@ -15,6 +15,8 @@ TTSDisplay display;
 
 void setup()
 {
+    display.init();
+    display.set(BRIGHT_TYPICAL);//BRIGHT_TYPICAL = 2,BRIGHT_DARKEST = 0,BRIGHTEST = 7;
     display.num(1234);
     delay(1000);
 }
