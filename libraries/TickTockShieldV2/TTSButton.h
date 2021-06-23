@@ -72,8 +72,6 @@ public:
     
 };
 
-<<<<<<< HEAD
-=======
 class TTSButtonV2{
 protected:
     String personal_name = "";
@@ -129,7 +127,6 @@ public:
     }
 };
 
->>>>>>> e4cbf78aec5bf7ffa58e5bfae7976912e514fac0
 #endif
 /*********************************************************************************************************
   END FILE
