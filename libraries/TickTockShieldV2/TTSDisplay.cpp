@@ -293,11 +293,12 @@ void TTSDisplay::temp(float temperature)
     point(false);
 
     
-    display(0, (decimal_part/10)%10);
-    display_raw(1, coding(decimal_part%10) + 0x80);
+  //  display(0, (decimal_part/10)%10);
+    display_raw(0, coding((decimal_part/10)%10) + 0x80);
+    display_raw(1, coding(decimal_part%10));
     
     display(2, fragm_part);
-    display(3, 0x7f);
+    display_raw(3, 0x66);
     /*
     else if(dta < 100)
     {
