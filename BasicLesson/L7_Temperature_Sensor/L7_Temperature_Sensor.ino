@@ -23,7 +23,6 @@
 #include <TTSDisplay.h>
 #include <TTSTemp.h>
 
-
 TTSDisplay disp;                                    // instantiate an object of display
 TTSTemp temp;                                       // instantiate an object of temperature
 
@@ -31,15 +30,25 @@ TTSTemp temp;                                       // instantiate an object of 
 void setup()
 {
     // nothing to setup
+        Serial.begin(115200);
 }
 
 void loop()
 {
-    int valTemp = temp.get();                       // get light sensor value
+    float valTemp = temp.get();                       // get light sensor value
+    int dec_part = valTemp;
+    int remainder = (valTemp - dec_part) * 10;
+
+      Serial.print("Temp value: ");
+      Serial.print(dec_part);
+      Serial.print(".");
+      Serial.print(remainder);
+      Serial.print(" OFF.\n");
+    //valTemp = 1234;
+    disp.temp(valTemp);                              // display light sensor value
+
     
-    disp.num(valTemp);                              // display light sensor value
-    
-    delay(100);
+    delay(1000);
 }
 
 /*********************************************************************************************************

@@ -48,7 +48,7 @@ public:
         __pin = PINTEMP;
     }
     
-    int get()                                   // get temperature
+    float get()                                   // get temperature
     {
         int a = 0;
 

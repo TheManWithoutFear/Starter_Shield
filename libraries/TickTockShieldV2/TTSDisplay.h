@@ -61,6 +61,7 @@ class TTSDisplay
     void stop(void); //send stop bits
     void display(int8_t DispData[]);
     void display(uint8_t BitAddr,int8_t DispData);
+    void display_raw(uint8_t BitAddr, int8_t SegData);
     void clearDisplay(void);
     void set(uint8_t = BRIGHT_TYPICAL,uint8_t = 0x40,uint8_t = 0xc0);//To take effect the next time it displays.
     void point(boolean PointFlag);//whether to light the clock point ":".To take effect the next time it displays.
@@ -71,6 +72,7 @@ class TTSDisplay
     void time(uint8_t hour, uint8_t min);
     void pointOn();                                     // display :
     void pointOff();
+    void temp(float temperature);
 
   private:
     uint8_t Clkpin;

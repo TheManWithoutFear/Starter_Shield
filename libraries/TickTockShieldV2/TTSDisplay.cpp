@@ -146,6 +146,21 @@ void TTSDisplay::display(uint8_t BitAddr,int8_t DispData)
   stop();           //
 }
 
+void TTSDisplay::display_raw(uint8_t BitAddr, int8_t SegData)
+{
+  //InternalData[BitAddr] = DispData;
+  start();          //start signal sent to TTSDisplay from MCU
+  writeByte(ADDR_FIXED);//
+  stop();           //
+  start();          //
+  writeByte(BitAddr|0xc0);//
+  writeByte(SegData);//
+  stop();            //
+  start();          //
+  writeByte(Cmd_DispCtrl);//
+  stop();           //
+}
+
 void TTSDisplay::clearDisplay(void)
 {
   display(0x00,0x7f);
@@ -266,4 +281,44 @@ void TTSDisplay::time(uint8_t hour, uint8_t min)
     display(1, hour%10);
     display(2, min/10);
     display(3, min%10);
+}
+
+void TTSDisplay::temp(float temperature)
+{
+    if(temperature < 0 || temperature >= 100) return;           // bad data
+    
+    //clear();
+    int decimal_part = temperature;
+    int fragm_part = (temperature - decimal_part) * 10;
+    point(false);
+
+    
+    display(0, (decimal_part/10)%10);
+    display_raw(1, coding(decimal_part%10) + 0x80);
+    
+    display(2, fragm_part);
+    display(3, 0x7f);
+    /*
+    else if(dta < 100)
+    {
+        display(0, dta/10);
+        display(1, dta%10);
+        display(1, 0x7f);
+        display(0, 0x7f);
+    }
+    else if(dta < 1000)
+    {
+        display(1, dta/100);
+        display(2, (dta/10)%10);
+        display(3, dta%10);
+        display(0, 0x7f);
+    }
+    else
+    {
+        display(0, dta/1000);
+        display(1, (dta/100)%10);
+        display(2, (dta/10)%10);
+        display(3, dta%10);
+    }
+    */
 }
