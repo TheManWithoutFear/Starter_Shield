@@ -26,7 +26,9 @@
 #include <Wire.h>
 #include <TTSDisplay.h>
 #include <TTSTime.h>
+#include <TTSExtension.h>
 
+TTSExtension PCF1;
 
 TTSDisplay disp;                                    // instantiate an object of display
 TTSTime time;
@@ -36,7 +38,9 @@ int min  = 0;                                       // minutes
 
 void setup()
 {
-    time.setTime(14, 14, 20);                       // set time to 14:14:20
+ //   time.setTime(13, 23, 00);                       // set time to 14:14:20
+     Serial.begin(115200);
+     PCF1.setValue(0);
 }
 
 void loop()
@@ -47,10 +51,17 @@ void loop()
     disp.time(hour, min);                           // display hour:min
     
     disp.pointOn();                                 // : on
-    delay(500);                                     
+    delay(140);                                     
     disp.pointOff();                                // : off
-    delay(500);
+    delay(140);
+    for(int i = 0; i < 16; i++){
+     uint16_t mask = 1 << i;
+      PCF1.setValue(mask);
+      delay(70);
+    }
 }
+
+
 
 /*********************************************************************************************************
   END FILE
