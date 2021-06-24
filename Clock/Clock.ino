@@ -162,7 +162,6 @@ void loop()
             led3.on();                                          // led 3 on
             while(keyDown.pressed())                            // display temperature until release keyDown
             {
-               
                 state = ST_TEMP;
                 float temperature = temp.get();
                 disp.temp(temperature);
@@ -176,17 +175,16 @@ void loop()
         {
 
             led4.on();                                          // led4 on for 10ms
-            delay(10);
-            led4.off();
             while(keyUp.pressed())                              // display light value until release keyUp
             {
                 state = ST_LIGHT;
                 int val_light = light.get();
                 disp.num(val_light);
                 
-                delay(100);
+                delay(200);
             }
             state = ST_TIME;  
+            led4.off();
         }
         
         break;

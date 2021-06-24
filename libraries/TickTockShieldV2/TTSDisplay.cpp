@@ -216,31 +216,31 @@ void TTSDisplay::num(int dta)
     point(false);
     if(dta < 10)
     {
-        display(3, dta);
-        display(2, 0x7f);
-        display(1, 0x7f);
-        display(0, 0x7f);
+      display(0, 0x7f);
+      display(1, 0x7f);
+      display(2, 0x7f);
+      display(3, dta);
     }
     else if(dta < 100)
     {
-        display(0, dta/10);
-        display(1, dta%10);
-        display(1, 0x7f);
-        display(0, 0x7f);
+      display(0, 0x7f);
+      display(1, 0x7f);
+      display(2, dta/10);
+      display(3, dta%10);
     }
     else if(dta < 1000)
     {
-        display(1, dta/100);
-        display(2, (dta/10)%10);
-        display(3, dta%10);
-        display(0, 0x7f);
+      display(0, 0x7f);
+      display(1, dta/100);
+      display(2, (dta/10)%10);
+      display(3, dta%10);
     }
     else
     {
-        display(0, dta/1000);
-        display(1, (dta/100)%10);
-        display(2, (dta/10)%10);
-        display(3, dta%10);
+      display(0, dta/1000);
+      display(1, (dta/100)%10);
+      display(2, (dta/10)%10);
+      display(3, dta%10);
     }
 }
 
