@@ -159,16 +159,17 @@ void loop()
         
         if(keyDown.pressed())                                   // press keyDown, display temperature
         {
-            led3.on();                                          // led 3 on for 10ms
-            delay(10);
-            led3.off();
+            led3.on();                                          // led 3 on
             while(keyDown.pressed())                            // display temperature until release keyDown
             {
+               
                 state = ST_TEMP;
-                int temperature = temp.get();
-                disp.num(temperature);
+                float temperature = temp.get();
+                disp.temp(temperature);
+                delay(200);
             }
             state = ST_TIME;  
+            led3.off();
         }
         
         if(keyUp.pressed())                                     // press keyUp, display light sensor value
