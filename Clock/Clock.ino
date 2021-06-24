@@ -74,6 +74,7 @@ void timerIsr()
         {
             disp.pointOff();                            // : off
         }
+        buz.handler();
     }
 }
 

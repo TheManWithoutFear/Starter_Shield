@@ -39,35 +39,49 @@ class TTSBuzzer{
 private:
 
     int __pin;
-    unsigned char __state;                    // state of state, HIGH: on, LOW: off
-
+    bool alarming;                    // state of state, HIGH: on, LOW: off
+    bool sound_state;                    // state of state, HIGH: on, LOW: off
 public:
 
     TTSBuzzer()
     {
         __pin = PINBUZZER;
-        __state = LOW;
+        alarming = false;
         pinMode(__pin, OUTPUT);
-        digitalWrite(__pin, LOW);
+        analogWrite(__pin, 0);
+        sound_state = false;
     }
     
     void on()                               // buzzer on
     {
-        __state = HIGH;
-        digitalWrite(__pin, __state);
+        alarming = true;
+        sound_state = true;
+        analogWrite(__pin, 100);
     }
     
     void off()                              // buzzer off
     {
-        __state = LOW;
-        digitalWrite(__pin, __state);
+        alarming = false;
+        sound_state = false;
+        analogWrite(__pin, 0);
     }
     
     unsigned char state()                   // return state of buzzer, HIGH: on, LOW: off
     {
-        return __state;
+        return alarming;
     }
-      
+    void handler()
+    {
+        if(alarming){
+            if(sound_state){
+                sound_state = false;
+                analogWrite(__pin, 0);
+            }else{
+                sound_state = true;
+                analogWrite(__pin, 100);
+            }
+        }
+    }  
 };
 
 #endif
