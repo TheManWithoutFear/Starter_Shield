@@ -11,6 +11,7 @@
 #include <TTSLight.h>
 #include <TTSTemp.h>
 #include <TTSTime.h>
+#include <TTSExtension.h>
 
 
 // STATE define here
@@ -43,14 +44,16 @@ TTSTemp temp;                               // instantiate an object of temperat
 TTSTime time;                               // instantiate an object of rtc
 
 
+TTSExtension indi;
+
 int state = ST_TIME;                        // state
 
 int alarm_hour = 8;                         // hour of alarm
 int alarm_min  = 0;                         // minutes of alarm
 
-int now_hour;                               // hour of running
-int now_min;                                // minutes of running
-int now_sec;                                // second of running
+int now_hour = 7;                               // hour of running
+int now_min = 59;                                // minutes of running
+int now_sec = 50;                                // second of running
 
 
 /*********************************************************************************************************
@@ -118,6 +121,7 @@ unsigned char isAlarm()
         state = ST_ALARMING;
         cout << "goto alarm" << endl;
         buz.on();
+        indi.on();
         return 1;
     }
     
@@ -128,18 +132,20 @@ unsigned char isAlarm()
 void setup()
 {
     Serial.begin(115200);
+    time.setTime(now_hour, now_min, now_sec);
+    indi.setValue(0);
+    indi.setValue(0x0001);
     
     now_hour = time.getHour();
     now_min  = time.getMin();
     
     Timer1.initialize(500000);                                  // timer1 500ms
     Timer1.attachInterrupt( timerIsr ); 
-
 }
 
 void loop()
 {
-
+    indi.handler();
     switch(state)
     {
     
@@ -252,6 +258,7 @@ void loop()
         if(light.get() < 150)                                   // if light sensor value less than 150
         {
             buz.off();
+            indi.off();
             state = ST_TIME;
         }
         break;

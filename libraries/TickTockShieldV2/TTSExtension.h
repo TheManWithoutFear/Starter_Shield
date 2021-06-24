@@ -37,10 +37,15 @@
 class TTSExtension{
 
 protected:
-    
+    bool light_alarm;
+    bool light_state;
+    int blink_cnt;
 public:
-    TTSExtension(){Wire.begin();}
+    TTSExtension(){Wire.begin();light_alarm = false; light_state = false; blink_cnt = 0;}
     void setValue(uint16_t new_value);
+    void on();
+    void off();
+    void handler();
 };
 
 #endif

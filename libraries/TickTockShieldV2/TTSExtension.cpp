@@ -49,6 +49,39 @@ void TTSExtension::setValue(uint16_t new_value)
     Wire.endTransmission(true);
 }
 
+void TTSExtension::on()
+{
+  light_alarm = true;
+  light_state = true;
+  blink_cnt = 2000;
+//  setValue(0xFFFF);
+}
+
+void TTSExtension::off()
+{
+  light_alarm = false;
+  light_state = false;
+  blink_cnt = 0;
+  setValue(0);
+}
+
+void TTSExtension::handler()
+{
+  if(blink_cnt == 0){
+    blink_cnt = 2000;
+    if(light_alarm){
+        if(light_state){
+            light_state = false;
+            setValue(0);
+        }else{
+            light_state = true;
+            setValue(0xFFFF);
+        }
+    }
+  }
+  blink_cnt--;
+}
+
 /*********************************************************************************************************
   END FILE
 *********************************************************************************************************/
