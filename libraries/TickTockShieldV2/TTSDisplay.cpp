@@ -184,22 +184,22 @@ void TTSDisplay::point(boolean PointFlag)
 }
 void TTSDisplay::coding(int8_t DispData[])
 {
-  uint8_t PointData;
-  if(_PointFlag == POINT_ON)PointData = 0x80;
-  else PointData = 0;
+  // uint8_t PointData;
+  // if(_PointFlag == POINT_ON)PointData = 0x80;
+  // else PointData = 0;
   for(uint8_t i = 0;i < 4;i ++)
   {
     if(DispData[i] == 0x7f)DispData[i] = 0x00;
-    else DispData[i] = TubeTab[DispData[i]] + PointData;
+    else DispData[i] = TubeTab[DispData[i]];// + PointData;
   }
 }
 int8_t TTSDisplay::coding(int8_t DispData)
 {
-  uint8_t PointData;
-  if(_PointFlag == POINT_ON)PointData = 0x80;
-  else PointData = 0;
-  if(DispData == 0x7f) DispData = 0x00 + PointData;//The bit digital tube off
-  else DispData = TubeTab[DispData] + PointData;
+  // uint8_t PointData;
+  // if(_PointFlag == POINT_ON)PointData = 0x80;
+  // else PointData = 0;
+  if(DispData == 0x7f) DispData = 0x00;// + PointData;//The bit digital tube off
+  else DispData = TubeTab[DispData];// + PointData;
   return DispData;
 }
 void TTSDisplay::bitDelay(void)
@@ -247,30 +247,40 @@ void TTSDisplay::num(int dta)
 void TTSDisplay::pointOn()
 {
     _PointFlag = 1;
-    
-    //FOR OLD DISPLAY:
-    // for(int i=0; i<4; i++)
-    // {
-    //     display(i, dtaDisplay[i]);
-    // }
 
-    //FOR NEW DISPLAY
-    display(1, InternalData[1]);
+//    display(1, InternalData[1]);
+    update_point();
 }   
 
 void TTSDisplay::pointOff()
 {
     _PointFlag = 0;
-    
-    //FOR OLD DISPLAY:
-    // for(int i=0; i<4; i++)
-    // {
-    //     display(i, dtaDisplay[i]);
-    // }
 
-    //FOR NEW DISPLAY
-    display(1, InternalData[1]);
+//    display(1, InternalData[1]);
+update_point();
 }
+
+void TTSDisplay::update_point()
+{
+  uint8_t PointData;
+  if(_PointFlag == POINT_ON)PointData = 0x80;
+  else PointData = 0;
+  if(InternalData[1] == 0x7f) InternalData[1] = 0x00 + PointData;//The bit digital tube off
+  else InternalData[1] = TubeTab[InternalData[1]] + PointData;
+  int8_t SegData =  InternalData[1];
+
+  start();          //start signal sent to TTSDisplay from MCU
+  writeByte(ADDR_FIXED);//
+  stop();           //
+  start();          //
+  writeByte(1|0xc0);//
+  writeByte(SegData);//
+  stop();            //
+  start();          //
+  writeByte(Cmd_DispCtrl);//
+  stop();           //
+}
+
 
 void TTSDisplay::time(uint8_t hour, uint8_t min)
 {

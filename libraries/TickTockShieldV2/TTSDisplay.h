@@ -73,6 +73,7 @@ class TTSDisplay
     void pointOn();                                     // display :
     void pointOff();
     void temp(float temperature);
+    void update_point();
 
   private:
     uint8_t Clkpin;

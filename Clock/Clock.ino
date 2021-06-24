@@ -65,6 +65,7 @@ void timerIsr()
     if(ST_TIME == state || ST_ALARMING == state)
     {   
         state_colon = 1-state_colon;
+        disp.time(now_hour, now_min);
         if(state_colon)
         {
             disp.pointOn();                             // : on
@@ -73,7 +74,6 @@ void timerIsr()
         {
             disp.pointOff();                            // : off
         }
-        disp.time(now_hour, now_min); 
     }
 }
 
