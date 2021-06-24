@@ -51,9 +51,9 @@ int state = ST_TIME;                        // state
 int alarm_hour = 8;                         // hour of alarm
 int alarm_min  = 0;                         // minutes of alarm
 
-int now_hour = 7;                               // hour of running
-int now_min = 59;                                // minutes of running
-int now_sec = 50;                                // second of running
+int now_hour = 0;                               // hour of running
+int now_min = 0;                                // minutes of running
+int now_sec = 0;                                // second of running
 
 
 /*********************************************************************************************************
@@ -132,9 +132,8 @@ unsigned char isAlarm()
 void setup()
 {
     Serial.begin(115200);
-    time.setTime(now_hour, now_min, now_sec);
+//    time.setTime(now_hour, now_min, now_sec);
     indi.setValue(0);
-    indi.setValue(0x0001);
     
     now_hour = time.getHour();
     now_min  = time.getMin();
